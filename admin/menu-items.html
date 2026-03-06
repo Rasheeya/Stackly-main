@@ -432,6 +432,19 @@
         });
     </script>
     <script src="../assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const mainContent = document.querySelector('.main-content');
+            if (mainContent) {
+                mainContent.addEventListener('click', function (event) {
+                    // Don't redirect on sidebar or header interactions
+                    if (!event.target.closest('.sidebar') && !event.target.closest('.top-header')) {
+                        window.location.href = '../404.html';
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
