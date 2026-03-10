@@ -1,37 +1,43 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="light">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stackly - 404 Error</title>
+    <title>Stackly - 404 Not Found</title>
     <!-- Fonts -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Jost:wght@400;500;600&display=swap"
         rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Jost', sans-serif;
+        }
+
         .error-page {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: url('assets/images/hero-bg.webp') center/cover;
+            background: url('assets/images/hero-bg.webp') center / cover no-repeat;
             position: relative;
+            padding: 2rem 1.25rem;
         }
 
         .error-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(29, 53, 87, 0.8), rgba(29, 53, 87, 0.95));
+            inset: 0;
+            background: linear-gradient(160deg, rgba(29, 53, 87, 0.88), rgba(10, 15, 30, 0.97));
             z-index: 1;
         }
 
@@ -39,17 +45,133 @@
             position: relative;
             z-index: 2;
             text-align: center;
-            color: white;
-            max-width: 600px;
-            padding: 2rem;
+            color: #fff;
+            width: 100%;
+            max-width: 560px;
+            padding: 0;
+            animation: fadeUp 0.7s ease both;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Decorative divider */
+        .error-divider {
+            width: 48px;
+            height: 3px;
+            background: var(--bs-primary, #C5A059);
+            margin: 0 auto 1.5rem;
+            border-radius: 2px;
         }
 
         .error-code {
-            font-size: 10rem;
-            font-weight: 900;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(5.5rem, 28vw, 10rem);
+            font-weight: 700;
             line-height: 1;
-            color: var(--bs-primary);
-            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            /* Gold gradient number */
+            background: linear-gradient(135deg, #C5A059 30%, #e8c97a 70%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 6px 20px rgba(197, 160, 89, 0.35));
+            margin-bottom: 0.5rem;
+        }
+
+        .error-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.35rem, 5.5vw, 2rem);
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+            letter-spacing: 0.01em;
+        }
+
+        .error-desc {
+            font-size: clamp(0.88rem, 3.8vw, 1rem);
+            opacity: 0.65;
+            line-height: 1.75;
+            margin-bottom: 0;
+            padding: 0 0.5rem;
+        }
+
+        /* Button container */
+        .error-btns {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+            align-items: stretch;
+            margin-top: 2.25rem;
+        }
+
+        .error-btns .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            padding: 0.85rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+
+        .btn-primary-solid {
+            background: linear-gradient(135deg, #C5A059, #e8c97a);
+            color: #1a1a1a;
+            border: none;
+            box-shadow: 0 4px 18px rgba(197, 160, 89, 0.4);
+        }
+
+        .btn-primary-solid:hover {
+            filter: brightness(1.08);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(197, 160, 89, 0.55);
+            color: #1a1a1a;
+        }
+
+        .btn-outline-gold {
+            background: transparent;
+            color: #C5A059;
+            border: 1.5px solid #C5A059;
+        }
+
+        .btn-outline-gold:hover {
+            background: rgba(197, 160, 89, 0.12);
+            transform: translateY(-2px);
+            color: #C5A059;
+        }
+
+        /* Tablet/Desktop: side by side */
+        @media (min-width: 480px) {
+            .error-btns {
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .error-btns .btn {
+                flex: 0 1 auto;
+                min-width: 170px;
+            }
+        }
+
+        /* Large screens */
+        @media (min-width: 768px) {
+            .error-page {
+                padding: 3rem 2rem;
+            }
         }
     </style>
 </head>
@@ -58,27 +180,33 @@
 
     <div class="error-page">
         <div class="error-overlay"></div>
-        <div class="error-content" data-aos="zoom-in">
-            <h1 class="error-code mb-4">404</h1>
-            <h2 class="display-5 fw-bold mb-3">Looks Like This Dish Is Off the Menu!</h2>
-            <p class="fs-5 opacity-75 mb-5 lh-lg">We couldn't find the page you were looking for. It might have been
-                devoured by one of our master chefs.</p>
-            <div class="d-flex justify-content-center gap-3">
-                <a href="index.html"
-                    class="btn btn-primary btn-lg rounded-pill fw-bold px-5 py-3 shadow-lg d-inline-flex gap-2 align-items-center">
-                    <i class="ph-bold ph-house-line"></i> Back to Homepage
+        <div class="error-content">
+
+            <div class="error-code">404</div>
+
+            <div class="error-divider"></div>
+
+            <h1 class="error-heading">Looks Like This Dish<br>Is Off the Menu!</h1>
+
+            <p class="error-desc">We couldn't find the page you were looking for.<br>
+                It might have been devoured by one of our master chefs.</p>
+
+            <div class="error-btns">
+                <a href="index.html" class="btn btn-primary-solid">
+                    <i class="ph-bold ph-house-line"></i>
+                    Back to Homepage
                 </a>
-                <button onclick="history.back()"
-                    class="btn btn-outline-primary btn-lg rounded-pill fw-bold px-5 py-3 shadow-lg d-inline-flex gap-2 align-items-center">
-                    <i class="ph-bold ph-arrow-left"></i> Go Back
+                <button onclick="history.back()" class="btn btn-outline-gold">
+                    <i class="ph-bold ph-arrow-left"></i>
+                    Go Back
                 </button>
             </div>
+
         </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init();</script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
